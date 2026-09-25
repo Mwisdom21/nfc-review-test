@@ -2,18 +2,374 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFC Review Test</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Palmas Smoke Shop Feedback</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #202124;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 130px;
+        }
+
+        /* Header */
+        .header {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 24px;
+        }
+
+        .back {
+            position: absolute;
+            left: 25px;
+            font-size: 38px;
+            color: #5f6368;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        /* Business identity */
+        .business {
+            display: flex;
+            align-items: center;
+            padding: 35px 34px 20px;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #90a4ae;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 34px;
+            margin-right: 24px;
+        }
+
+        .business-name {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .business-subtitle {
+            color: #5f6368;
+            font-size: 18px;
+        }
+
+        /* Stars */
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            margin: 35px 0 55px;
+        }
+
+        .star {
+            font-size: 58px;
+            line-height: 1;
+            cursor: pointer;
+            color: #80868b;
+            user-select: none;
+            transition: color 0.1s ease;
+        }
+
+        .star.selected {
+            color: #fbbc04;
+        }
+
+        /* Feedback */
+        .feedback-area {
+            padding: 0 24px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 220px;
+
+            border: 2px solid #9aa0a6;
+            border-radius: 7px;
+
+            padding: 28px 25px;
+
+            resize: none;
+
+            font-family: inherit;
+            font-size: 22px;
+            line-height: 1.45;
+
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #1a73e8;
+        }
+
+        textarea::placeholder {
+            color: #5f6368;
+        }
+
+        /* Photo button */
+        .photo-button {
+            width: 100%;
+            height: 72px;
+
+            margin-top: 25px;
+
+            border: none;
+            border-radius: 36px;
+
+            background: #eef3fe;
+            color: #174ea6;
+
+            font-size: 21px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        /* Bottom area */
+        .bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            background: white;
+            padding: 18px 24px max(22px, env(safe-area-inset-bottom));
+        }
+
+        .bottom-inner {
+            max-width: 552px;
+            margin: 0 auto;
+        }
+
+        .submit-button {
+            width: 100%;
+            height: 62px;
+
+            border: none;
+            border-radius: 31px;
+
+            font-size: 21px;
+            font-weight: 600;
+
+            background: #e0e0e0;
+            color: #9aa0a6;
+
+            cursor: not-allowed;
+        }
+
+        .submit-button.active {
+            background: #1a73e8;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 25px;
+            }
+
+            .stars {
+                gap: 14px;
+            }
+
+            .star {
+                font-size: 52px;
+            }
+
+            textarea {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>NFC Review Test</h1>
 
-    <p>If you reached this page by tapping the acrylic plate,
-       the redirect is working.</p>
+<div class="page">
 
-    <button onclick="alert('NFC redirect confirmed')">
-        Test
-    </button>
+    <header class="header">
+
+        <button class="back" onclick="history.back()">
+            ‹
+        </button>
+
+        <div class="header-title">
+            Palmas Smoke Shop
+        </div>
+
+    </header>
+
+
+    <section class="business">
+
+        <div class="avatar">
+            P
+        </div>
+
+        <div>
+            <div class="business-name">
+                Palmas Smoke Shop
+            </div>
+
+            <div class="business-subtitle">
+                Share your experience
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="stars">
+
+        <span class="star" data-value="1">☆</span>
+        <span class="star" data-value="2">☆</span>
+        <span class="star" data-value="3">☆</span>
+        <span class="star" data-value="4">☆</span>
+        <span class="star" data-value="5">☆</span>
+
+    </section>
+
+
+    <section class="feedback-area">
+
+        <textarea
+            id="reviewText"
+            placeholder="Share details of your experience at this place">
+        </textarea>
+
+        <button class="photo-button">
+            ＋ Add photos
+        </button>
+
+    </section>
+
+</div>
+
+
+<div class="bottom">
+
+    <div class="bottom-inner">
+
+        <button
+            id="submitButton"
+            class="submit-button"
+            disabled>
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    let selectedRating = 0;
+
+    const stars =
+        document.querySelectorAll(".star");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    stars.forEach(star => {
+
+        star.addEventListener("click", () => {
+
+            selectedRating =
+                Number(star.dataset.value);
+
+            updateStars();
+
+            submitButton.disabled = false;
+            submitButton.classList.add("active");
+
+        });
+
+    });
+
+
+    function updateStars() {
+
+        stars.forEach(star => {
+
+            const value =
+                Number(star.dataset.value);
+
+            if (value <= selectedRating) {
+
+                star.textContent = "★";
+                star.classList.add("selected");
+
+            } else {
+
+                star.textContent = "☆";
+                star.classList.remove("selected");
+
+            }
+
+        });
+
+    }
+
+
+    submitButton.addEventListener("click", () => {
+
+        const reviewText =
+            document
+                .getElementById("reviewText")
+                .value;
+
+        console.log({
+            rating: selectedRating,
+            review: reviewText
+        });
+
+        alert(
+            `Rating: ${selectedRating} stars`
+        );
+
+    });
+
+</script>
+
 </body>
 </html>
